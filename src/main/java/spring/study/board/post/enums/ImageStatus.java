@@ -1,4 +1,4 @@
-package spring.study.board.board.enums;
+package spring.study.board.post.enums;
 
 public enum ImageStatus {
     PUBLISHED,

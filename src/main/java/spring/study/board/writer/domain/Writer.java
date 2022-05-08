@@ -1,25 +1,27 @@
-package spring.study.board.board.domain;
+package spring.study.board.writer.domain;
 
+import lombok.Getter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import spring.study.board.board.enums.ImageStatus;
+import spring.study.board.post.domain.Post;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
+@Getter
 @Entity
-public class Photo {
+public class Writer {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "post_id")
-    private Post post;
+    private String name;
 
-    private String imageUrl;
+    private String profileImageUrl;
 
-    @Enumerated(EnumType.STRING)
-    private ImageStatus status;
+    @OneToMany(mappedBy = "writer")
+    private List<Post> posts = new ArrayList<>();
 
     @CreationTimestamp
     private LocalDateTime createdAt;

@@ -1,15 +1,19 @@
-package spring.study.board.board.domain;
+package spring.study.board.post.domain;
 
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import spring.study.board.photo.domain.Photo;
+import spring.study.board.writer.domain.Writer;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 @NoArgsConstructor
 @Entity
 public class Post {
@@ -38,5 +42,9 @@ public class Post {
         this.title = title;
         this.content = content;
         this.writer = writer;
+    }
+
+    public void updatePhotos(List<Photo> photos) {
+        this.photos = photos;
     }
 }
